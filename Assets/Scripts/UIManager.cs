@@ -17,7 +17,8 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void AddMerge()
     {
-        mergeCountText.text = "Merges: " + mergeCount;
         mergeCount++;
+        mergeCountText.text = "Merges: " + mergeCount;
+        
     }
 }

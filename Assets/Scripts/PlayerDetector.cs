@@ -20,11 +20,14 @@ public class PlayerDetector : MonoBehaviour
     // Registra si ya está resaltado
     private bool isHighlighted;
 
+    public Transform rayPoint;
+
     // Update se ejecuta una vez por frame
     private void Update()
     {
+
         // Lanzamos un Raycast para detectar objetos mergeables
-        if (Physics.Raycast(transform.position, Vector3.up, detectionRange, LayerMask.GetMask("Mergeable")))
+        if (Physics.Raycast(transform.position, Vector3.forward, detectionRange, LayerMask.GetMask("Mergeable")))
         {
             if (!isHighlighted)
             {
@@ -43,5 +46,10 @@ public class PlayerDetector : MonoBehaviour
                 isHighlighted = false;
             }
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(rayPoint.position, transform.forward);
     }
 }
